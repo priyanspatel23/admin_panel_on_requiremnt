@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="background-color: #b66dff; color: white; padding: 10px;">Add Category
+                    </h4>
+                    <form class="forms-sample" action="/addCategory" method="POST">
+                        <div class="form-group">
+                            <label for="categoryName">Category Name</label>
+                            <input type="text" class="form-control" id="categoryName" name="categoryName"
+                                placeholder="Enter category name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2"
+                            style="background-color: #26d4c1; border-color: #26d4c1;">Add Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

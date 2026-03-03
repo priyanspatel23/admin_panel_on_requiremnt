@@ -1,0 +1,64 @@
+<%- include('../partials/header') %>
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">View all products</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead style="background-color: #191c24; color: white;">
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (typeof products !=='undefined' && products.length> 0) { %>
+                                    <% products.forEach(product=> { %>
+                                        <tr>
+                                            <td><img src="<%= product.image %>" alt="product"
+                                                    style="width: 50px; height: 50px;"></td>
+                                            <td>
+                                                <%= product.title %>
+                                            </td>
+                                            <td>
+                                                <%= product.description %>
+                                            </td>
+                                            <td>
+                                                <%= product.price %>
+                                            </td>
+                                            <td>
+                                                <%= product.stock %>
+                                            </td>
+                                            <td>
+                                                <%= product.categoryId ? product.categoryId.name : 'N/A' %>
+                                            </td>
+                                            <td>
+                                                <a href="/editProduct/<%= product._id %>"
+                                                    class="btn btn-sm btn-info">Edit</a>
+                                                <a href="/deleteProduct/<%= product._id %>"
+                                                    class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td colspan="7" class="text-center text-danger">No Products Found
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

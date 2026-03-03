@@ -1,0 +1,90 @@
+<%- include('../partials/header') %>
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="background-color: #b66dff; color: white; padding: 10px;">Add Product
+                    </h4>
+                    <form class="forms-sample" action="/addProduct" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                        placeholder="Enter title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        placeholder="Enter description">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" class="form-control" id="price" name="price"
+                                        placeholder="Enter price" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="productImage">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stock">Stock</label>
+                                    <input type="number" class="form-control" id="stock" name="stock"
+                                        placeholder="Enter stock" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoryId">Category</label>
+                                    <select class="form-control" id="categoryId" name="categoryId" required>
+                                        <option value="">Select Category</option>
+                                        <% if (typeof categories !=='undefined' ) { %>
+                                            <% categories.forEach(category=> { %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                                    <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="subCategoryId">Sub Category</label>
+                                    <select class="form-control" id="subCategoryId" name="subCategoryId">
+                                        <option value="">Select Sub Category</option>
+                                        <% if (typeof subCategories !=='undefined' ) { %>
+                                            <% subCategories.forEach(sub=> { %>
+                                                <option value="<%= sub._id %>">
+                                                    <%= sub.name %>
+                                                </option>
+                                                <% }) %>
+                                                    <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2"
+                            style="background-color: #26d4c1; border-color: #26d4c1;">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

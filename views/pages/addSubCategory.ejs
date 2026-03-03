@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="background-color: #b66dff; color: white; padding: 10px;">Add Sub
+                        Category</h4>
+                    <form class="forms-sample" action="/addSubCategory" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="subCategoryName">Sub Category Name</label>
+                                    <input type="text" class="form-control" id="subCategoryName" name="subCategoryName"
+                                        placeholder="Enter sub category name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoryId">Category</label>
+                                    <select class="form-control" id="categoryId" name="categoryId" required>
+                                        <option value="">Select Category</option>
+                                        <% if (typeof categories !=='undefined' ) { %>
+                                            <% categories.forEach(category=> { %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                                    <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2"
+                            style="background-color: #26d4c1; border-color: #26d4c1;">Add Sub Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
